@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "232303434458",
+    "project_id": "savvynurse-c6187",
+    "storage_bucket": "savvynurse-c6187.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:232303434458:android:3cbe0205a582a4855163e3",
+        "android_client_info": {
+          "package_name": "com.example.savvynurse"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "232303434458-tpughc7j9jlnspkeod9mgd9p75nhm9dp.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.savvynurse",
+            "certificate_hash": "54304b9bee9f7e38dccfe8b76769596533a43059"
+          }
+        },
+        {
+          "client_id": "232303434458-reae1k5vpfa20qrm0bse3g1qkg0ngjko.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBJ5qlKMPiaeaCgsHfWwUOHWO_RF7N_bfQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "232303434458-reae1k5vpfa20qrm0bse3g1qkg0ngjko.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
