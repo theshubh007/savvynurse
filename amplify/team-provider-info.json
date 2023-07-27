@@ -10,6 +10,11 @@
       "StackName": "amplify-savvynurse-staging-170313",
       "StackId": "arn:aws:cloudformation:ap-south-1:678576703961:stack/amplify-savvynurse-staging-170313/790be931-2c9f-11ee-9a30-06522431d086",
       "AmplifyAppId": "d70or1pcniaan"
+    },
+    "categories": {
+      "auth": {
+        "savvynurse78c49d4d": {}
+      }
     }
   }
 }

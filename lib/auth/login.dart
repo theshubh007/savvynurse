@@ -276,9 +276,13 @@ class _LoginscreenState extends State<Loginscreen> {
   }) async {
     ProgressDialogUtils.showProgressDialog();
     try {
-      final credential = await FirebaseAuth.instance.signInWithEmailAndPassword(
+      //final credential = await FirebaseAuth.instance.signInWithEmailAndPassword(
+        await Amplify.Auth.signup(
         email: email,
         password: password,
+        options: CognitoSignUpOptions(
+          userAttributes : { "email": email},
+        )
       );
       User? user = credential.user;
       await FirebaseFirestore.instance
@@ -304,7 +308,7 @@ class _LoginscreenState extends State<Loginscreen> {
           );
         }
       });
-    } on FirebaseAuthException catch (e) {
+    } "on FirebaseAuthException catch (e) {
       ProgressDialogUtils.hideProgressDialog();
       if (e.code == 'user-not-found') {
         Get.snackbar("allert", "user not found",
@@ -318,7 +322,7 @@ class _LoginscreenState extends State<Loginscreen> {
       }
     }
   }
-
+"
   Future<void> resetpassword(String email) async {
     await auth.sendPasswordResetEmail(email: email);
     print(email);
