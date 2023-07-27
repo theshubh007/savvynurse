@@ -1,0 +1,15 @@
+{
+  "staging": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-savvynurse-staging-170313-authRole",
+      "UnauthRoleArn": "arn:aws:iam::678576703961:role/amplify-savvynurse-staging-170313-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::678576703961:role/amplify-savvynurse-staging-170313-authRole",
+      "Region": "ap-south-1",
+      "DeploymentBucketName": "amplify-savvynurse-staging-170313-deployment",
+      "UnauthRoleName": "amplify-savvynurse-staging-170313-unauthRole",
+      "StackName": "amplify-savvynurse-staging-170313",
+      "StackId": "arn:aws:cloudformation:ap-south-1:678576703961:stack/amplify-savvynurse-staging-170313/790be931-2c9f-11ee-9a30-06522431d086",
+      "AmplifyAppId": "d70or1pcniaan"
+    }
+  }
+}
