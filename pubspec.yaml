@@ -39,11 +39,10 @@ dependencies:
     ## pedantics: ^1.11.0
 
   cupertino_icons: ^1.0.2
-  get:
-    ^4.6.5
-    ##firebase_core: ^2.1.1
-    ##firebase_auth: ^4.1.0
-    ##cloud_firestore: ^4.0.3
+  get: ^4.6.5
+  firebase_core: ^2.1.1
+  firebase_auth: ^4.1.0
+  cloud_firestore: ^4.0.3
   http: ^0.13.5
   lottie:
     ^1.4.2

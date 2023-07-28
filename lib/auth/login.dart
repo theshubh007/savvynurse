@@ -1,10 +1,11 @@
 import 'dart:async';
+import 'package:amplify_auth_cognito/amplify_auth_cognito.dart';
 import 'package:amplify_flutter/amplify_flutter.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
+// import 'package:cloud_firestore/cloud_firestore.dart';
+// import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:google_sign_in/google_sign_in.dart';
+// import 'package:google_sign_in/google_sign_in.dart';
 import 'package:savvynurse/utils/color_constant.dart';
 import 'package:savvynurse/widget/progress_dialog.dart';
 
@@ -25,8 +26,8 @@ class _LoginscreenState extends State<Loginscreen> {
   TextEditingController emailcontroller = TextEditingController();
   TextEditingController passcontroller = TextEditingController();
 
-  FirebaseAuth auth = FirebaseAuth.instance;
-  GoogleSignIn googleSignIn = GoogleSignIn();
+  // FirebaseAuth auth = FirebaseAuth.instance;
+  // GoogleSignIn googleSignIn = GoogleSignIn();
 
   @override
   void initState() {
@@ -224,8 +225,8 @@ class _LoginscreenState extends State<Loginscreen> {
                                   .trim()
                                   .toString()
                                   .isNotEmpty) {
-                                resetpassword(
-                                    emailcontroller.text.trim().toString());
+                                // resetpassword(
+                                //     emailcontroller.text.trim().toString());
                               } else {
                                 Get.snackbar(
                                   "Allert", // title
@@ -278,56 +279,29 @@ class _LoginscreenState extends State<Loginscreen> {
     ProgressDialogUtils.showProgressDialog();
     try {
       //final credential = await FirebaseAuth.instance.signInWithEmailAndPassword(
-        await Amplify.Auth.signup(
-        email: email,
+         SignInResult res = await Amplify.Auth.signIn(
+        username: email,
         password: password,
-        options: CognitoSignUpOptions(
-          userAttributes : { "email": email},
-        )
       );
-      User? user = credential.user;
-      await FirebaseFirestore.instance
-          .collection('Patient')
-          .doc(user!.uid)
-          .get()
-          .then((value) {
-        if (value.exists) {
-          ProgressDialogUtils.hideProgressDialog();
-          Get.toNamed("/home");
-        } else {
-          ProgressDialogUtils.hideProgressDialog();
-          Get.offAllNamed("/login");
-          Get.snackbar(
-            "Error",
-            "Please Signup as patient First",
-            snackPosition: SnackPosition.BOTTOM,
-            backgroundColor: Colors.red,
-            borderRadius: 10,
-            margin: const EdgeInsets.all(10),
-            borderColor: Colors.red,
-            borderWidth: 2,
-          );
-        }
-      });
-    } "on FirebaseAuthException catch (e) {
-      ProgressDialogUtils.hideProgressDialog();
-      if (e.code == 'user-not-found') {
-        Get.snackbar("allert", "user not found",
-            backgroundColor: Colors.lightBlueAccent, colorText: Colors.black);
-      } else if (e.code == 'wrong-password') {
-        Get.snackbar("allert", "wrong password",
-            backgroundColor: Colors.lightBlueAccent, colorText: Colors.black);
-      } else if (e.code == "invalid-email") {
-        Get.snackbar("allert", "invalid email",
-            backgroundColor: Colors.lightBlueAccent, colorText: Colors.black);
+    if (res.isSignedIn) {
+        // Login successful
+        print('Login successful');
+        // You can navigate to the next screen or perform other actions here.
+      } else {
+        // Login failed
+        print('Login failed');
       }
+    } catch (e) {
+      // Signup failed
+      print('Error signing up: $e');
     }
+ 
   }
-"
-  Future<void> resetpassword(String email) async {
-    await auth.sendPasswordResetEmail(email: email);
-    print(email);
-    Get.snackbar("allert", "password reset link sent to your email",
-        backgroundColor: Colors.lightBlueAccent, colorText: Colors.black);
-  }
+
+  // Future<void> resetpassword(String email) async {
+  //   await auth.sendPasswordResetEmail(email: email);
+  //   print(email);
+  //   Get.snackbar("allert", "password reset link sent to your email",
+  //       backgroundColor: Colors.lightBlueAccent, colorText: Colors.black);
+  // }
 }

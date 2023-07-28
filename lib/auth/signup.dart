@@ -1,3 +1,5 @@
+import 'package:amplify_auth_cognito/amplify_auth_cognito.dart';
+import 'package:amplify_flutter/amplify_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import "package:get/get.dart";
@@ -251,28 +253,21 @@ class _SignuppageState extends State<Signuppage> {
 
   Future<void> registerNewUser() async {
     try {
-      final credential = await auth
-          .createUserWithEmailAndPassword(
-              email: emailcontroller.text, password: passcontroller.text)
-          .then((result) {
-        patients.doc(result.user!.uid).set({
-          "doctorname": namecontroller.text,
-          "email": emailcontroller.text,
-          "password": passcontroller.text,
-          "phone": phonecontroller.text,
-        });
-        Get.toNamed("/login");
-      });
-    } on FirebaseAuthException catch (e) {
-      if (e.code == "email-already-in-use") {
-        Get.snackbar("allert", 'The account already exists for that email.');
-      } else if (e.code == "invalid-email") {
-        Get.snackbar("allert", 'The email address is badly formatted.');
+       SignUpResult res = await Amplify.Auth.signUp(
+        username: emailcontroller.text.trim(),
+        password: passcontroller.text.trim(),
+      );
+      if (res.isSignUpComplete) {
+        // Signup successful
+        print('Sign up successful: ${res.nextStep}');
+        // You can navigate to the next screen or perform other actions here.
       } else {
-        Get.snackbar("allert", e.message.toString());
+        Get.snackbar("Authentication failed", "Try again",
+            backgroundColor: Colors.red, colorText: Colors.black);
       }
     } catch (e) {
-      Get.snackbar("allert", "e");
+      // Signup failed
+      print('Error signing up: $e');
     }
   }
 }
