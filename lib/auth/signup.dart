@@ -1,9 +1,9 @@
 import 'package:amplify_auth_cognito/amplify_auth_cognito.dart';
 import 'package:amplify_flutter/amplify_flutter.dart';
 import 'package:flutter/material.dart';
-import 'package:firebase_auth/firebase_auth.dart';
+// import 'package:firebase_auth/firebase_auth.dart';
 import "package:get/get.dart";
-import 'package:cloud_firestore/cloud_firestore.dart';
+// import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:savvynurse/utils/color_constant.dart';
 
 class Signuppage extends StatefulWidget {
@@ -15,11 +15,11 @@ class Signuppage extends StatefulWidget {
 
 class _SignuppageState extends State<Signuppage> {
   final _formKey = GlobalKey<FormState>();
-  FirebaseAuth auth = FirebaseAuth.instance;
+  // FirebaseAuth auth = FirebaseAuth.instance;
   bool signtype = true;
 
-  CollectionReference patients =
-      FirebaseFirestore.instance.collection('Patient');
+  // CollectionReference patients =
+      // FirebaseFirestore.instance.collection('Patient');
   TextEditingController namecontroller = TextEditingController();
   TextEditingController emailcontroller = TextEditingController();
   TextEditingController passcontroller = TextEditingController();
