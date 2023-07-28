@@ -3,7 +3,7 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:google_sign_in/google_sign_in.dart';
+// import 'package:google_sign_in/google_sign_in.dart';
 import 'package:savvynurse/auth/login.dart';
 import 'package:savvynurse/problem_list_page.dart';
 
@@ -52,9 +52,9 @@ class _HomepageState extends State<Homepage> {
   ];
 
   Future<void> signOutFromGoogle() async {
-    final GoogleSignIn googleSignIn = GoogleSignIn();
+    // final GoogleSignIn googleSignIn = GoogleSignIn();
     final FirebaseAuth auth = FirebaseAuth.instance;
-    await googleSignIn.signOut();
+    // await googleSignIn.signOut();
     await auth.signOut();
   }
 
