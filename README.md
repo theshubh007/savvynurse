@@ -1,6 +1,6 @@
 # savvynurse
-
-A new Flutter project.
+This is Part of AWS Amplify Hackathon.
+(note: currently AI model and Aws services are disconnected from this repo due to maintainance)
 
 ## Getting Started
 
